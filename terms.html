@@ -1,30 +1,285 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>用户使用条款</title>
-    <style>
-        body {max-width:800px;margin:30px auto;padding:0 20px;font-family:Arial,sans-serif;line-height:1.7;color:#333;}
-        h1,h2 {color:#222;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Terms of Use · Finalray</title>
+<style>
+  :root {
+    --bg: #f2f2f7;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --text-secondary: #6c6c70;
+    --text-tertiary: #8e8e93;
+    --separator: rgba(60, 60, 67, 0.12);
+    --accent: #0a84ff;
+    --card-radius: 14px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --card: #1c1c1e;
+      --text: #ffffff;
+      --text-secondary: #98989f;
+      --text-tertiary: #8e8e93;
+      --separator: rgba(84, 84, 88, 0.55);
+      --accent: #0a84ff;
+    }
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: calc(var(--safe-top)) max(16px, env(safe-area-inset-left)) calc(40px + var(--safe-bottom)) max(16px, env(safe-area-inset-right));
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    text-align: center;
+    padding: 40px 8px 28px;
+  }
+  header .appname {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    margin: 0 0 12px;
+  }
+  header .updated {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin: 0;
+  }
+
+  /* ---------- Intro ---------- */
+  .intro {
+    color: var(--text-secondary);
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin: 0 0 26px;
+    padding: 0 4px;
+  }
+  .intro p { margin: 0 0 12px; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro .legal-emph {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ---------- Section cards ---------- */
+  section {
+    background: var(--card);
+    border-radius: var(--card-radius);
+    padding: 18px 18px 20px;
+    margin: 0 0 18px;
+  }
+  section h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-tertiary);
+    margin: 0 0 10px;
+  }
+  section h2 .num {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+  section p {
+    margin: 0 0 12px;
+  }
+  section p:last-child { margin-bottom: 0; }
+
+  /* Sub-labelled paragraphs (e.g. Billing and Payments:) */
+  section p .lead {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  a { color: var(--accent); text-decoration: none; word-break: break-word; }
+  a:active { opacity: 0.6; }
+
+  .contact-email {
+    display: inline-block;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 13px;
+    margin-top: 30px;
+  }
+
+  /* ---------- Back to top ---------- */
+  #toTop {
+    position: fixed;
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(20px + var(--safe-bottom));
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: var(--card);
+    color: var(--accent);
+    font-size: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #toTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  @media (prefers-color-scheme: dark) {
+    #toTop { box-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+  }
+</style>
 </head>
 <body>
-    <h1>用户使用条款</h1>
-    <p>生效日期：2026年07月04日</p>
+  <div class="wrap">
+    <header>
+      <p class="appname">Finalray</p>
+      <h1>Terms of Use</h1>
+      <p class="updated">Last Updated: July 26, 2026</p>
+    </header>
 
-    <h2>一、服务说明</h2>
-    <p>本App为开发者提供的免费工具类应用，仅用于个人合法用途。</p>
+    <div class="intro">
+      <p>"App" or "Application" refers to the image and video processing software application owned and operated by Finalray.</p>
+      <p class="legal-emph">BY DOWNLOADING, INSTALLING, OR USING THIS SOFTWARE APPLICATION, YOU AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT INSTALL OR USE THE APPLICATION.</p>
+      <p>Finalray may modify or update these Terms of Use and the Privacy Policy from time to time. When we make material changes, we will update the "Last Updated" date above. Your continued use of the Application after any change constitutes your acceptance of the updated Terms of Use and Privacy Policy.</p>
+    </div>
 
-    <h2>二、用户行为规范</h2>
-    <p>禁止使用本App从事违法、侵权、色情、诈骗等违规行为，违规开发者有权永久封禁使用权限。</p>
+    <section>
+      <h2><span class="num">1</span>User Data &amp; Privacy</h2>
+      <p>Finalray is designed as a local image and video processing application. We do not collect, upload, or process your photos, videos, edited media, or personal files on our servers. Image editing, video processing, and rendering are performed locally on your device.</p>
+      <p>Finalray does not independently collect analytics, advertising identifiers, or feature usage statistics through third-party services. Apple may provide crash reports or diagnostic information through App Store Connect, Xcode Organizer, TestFlight, or related Apple developer tools if you have chosen to share diagnostics and usage data with Apple in your device settings.</p>
+      <p>Please refer to our Privacy Policy for more details on how we handle privacy and data.</p>
+    </section>
 
-    <h2>三、内购/订阅说明（无内购可删除本段）</h2>
-    <p>自动订阅将在到期前24小时自动扣费，您可在App Store账户设置中随时关闭自动续费；已购服务不支持无理由退款，退款申请遵循苹果官方规则。</p>
+    <section>
+      <h2><span class="num">2</span>User Content</h2>
+      <p>The App provides tools for you to edit and process your own photos, videos, and images. You retain all rights, title, and interest in and to your content.</p>
+      <p>You understand that the App does not provide a social sharing network or a cloud storage service for your media files. You are solely responsible for the content you edit, save, export, or manually share outside of the App using your device's native sharing capabilities or other services.</p>
+      <p>Finalray is not responsible or liable for any content you create, modify, export, save, or share using our tools, nor do we monitor or control your content.</p>
+    </section>
 
-    <h2>四、免责声明</h2>
-    <p>App按现状提供，开发者不保证服务永久无故障，因用户自身操作不当造成损失由用户自行承担。</p>
+    <section>
+      <h2><span class="num">3</span>Custom Presets and iCloud</h2>
+      <p>If you create custom presets in the App, those presets may be stored and synced through your personal iCloud account if iCloud is enabled on your device.</p>
+      <p>Such presets are stored in your own iCloud storage and are handled by Apple according to Apple's terms, privacy policy, and your iCloud settings. Finalray does not operate its own cloud storage service for custom presets and does not access, view, sell, or share your iCloud data.</p>
+      <p>You are responsible for managing your iCloud settings, available iCloud storage, and any app-related iCloud data associated with your Apple ID.</p>
+    </section>
 
-    <h2>五、联系方式</h2>
-    <p>开发者邮箱：xxx@xxx.com</p>
+    <section>
+      <h2><span class="num">4</span>In-App Purchases and Pro Features</h2>
+      <p>The App may offer certain premium features, paid tools, subscriptions, or content, such as advanced filters, HSL adjustments, curves, templates, or other editing tools, collectively referred to as "Pro Features", for purchase through the Apple App Store.</p>
+      <p><span class="lead">Billing and Payments:</span> All transactions are processed and billed by Apple Inc. through your Apple ID, iTunes account, or App Store account. Payments are subject to Apple's terms and conditions.</p>
+      <p><span class="lead">Restore Purchases:</span> If you reinstall the App or switch to a new compatible Apple device, you may be able to restore previously purchased Pro Features via the "Restore Purchases" option in the App, subject to Apple's purchase restoration rules and the type of purchase.</p>
+      <p><span class="lead">Refunds:</span> All billing and refund requests are handled by Apple. To request a refund, please follow Apple's official refund procedures, such as through <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. Finalray does not have access to Apple's billing systems and cannot issue refunds directly.</p>
+      <p><span class="lead">Subscriptions:</span> If the App offers auto-renewable subscriptions, subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period. You can manage or cancel subscriptions through your Apple ID account settings. Subscription billing and renewal are handled by Apple.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">5</span>License &amp; Finalray Content</h2>
+      <p>Subject to these Terms, you are granted a terminable, limited, non-transferable, non-exclusive, non-sublicensable license to install and use this Application on any compatible Apple-branded device that you own or control, and as permitted by the Usage Rules set forth in the Apple Media Services Terms and Conditions.</p>
+      <p>You may not rent, lease, lend, sell, redistribute, or sublicense this Application.</p>
+      <p>Unless otherwise stated, all materials contained within the Application, including but not limited to software, UI design, graphics, logos, filters, presets, templates, and source code, are the intellectual property of Finalray and are protected by copyright, trademark, and other intellectual property laws.</p>
+      <p>Except as expressly permitted by these Terms or applicable law, you may not copy, decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of the Application or any part thereof.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">6</span>Disclaimer of Warranties</h2>
+      <p>You acknowledge and agree that, to the extent permitted by applicable law, use of the Application is at your sole risk.</p>
+      <p>To the maximum extent permitted by applicable law, the Application is provided "AS IS" and "AS AVAILABLE", with all faults and without warranty of any kind. Finalray disclaims all warranties and conditions with respect to the Application, whether express, implied, or statutory, including but not limited to warranties of merchantability, satisfactory quality, fitness for a particular purpose, accuracy, quiet enjoyment, and non-infringement.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">7</span>Limitations of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, Finalray and its affiliates shall not be liable for any personal injury, incidental, special, indirect, exemplary, punitive, or consequential damages, including damages for loss of profits, loss of data, loss of content, business interruption, device failure, or other commercial damages or losses, arising out of or related to your use of or inability to use the Application.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">8</span>Apple App Store Additional Terms</h2>
+      <p>As this Application is downloaded from the Apple App Store, you acknowledge and agree to the following:</p>
+      <p><span class="lead">Party Agreement:</span> These Terms are concluded between you and Finalray only, and not with Apple Inc. Finalray, not Apple, is solely responsible for the Application and its content.</p>
+      <p><span class="lead">Maintenance and Support:</span> Finalray is solely responsible for providing maintenance and support services for the Application. Apple has no obligation to provide maintenance or support services for the Application.</p>
+      <p><span class="lead">Product Claims and Intellectual Property:</span> Finalray, not Apple, is responsible for addressing claims relating to the Application or your possession and use of the Application. If any third party claims that the Application infringes that third party's intellectual property rights, Finalray, not Apple, will be responsible for the investigation, defense, settlement, and discharge of such claim.</p>
+      <p><span class="lead">Third-Party Beneficiary:</span> You acknowledge and agree that Apple and Apple's subsidiaries are third-party beneficiaries of these Terms. After you accept these Terms, Apple will have the right to enforce these Terms against you as a third-party beneficiary.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">9</span>Governing Law and Dispute Resolution</h2>
+      <p>Except to the extent that applicable local laws and regulations of your jurisdiction require otherwise, such as mandatory consumer protection laws, these Terms and any dispute or claim arising out of or in connection with them will be governed by and construed in accordance with the laws of the People's Republic of China, without regard to conflict of law principles.</p>
+      <p>Any dispute, controversy, or claim arising out of or relating to these Terms, including their existence, validity, interpretation, performance, breach, or termination, will be referred to and finally resolved by arbitration administered by the China International Economic and Trade Arbitration Commission, also known as CIETAC, in Beijing. The arbitration shall be conducted in accordance with the CIETAC arbitration rules in effect at the time of arbitration. The arbitration award shall be final and binding upon both parties.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Severability</h2>
+      <p>If any provision of these Terms is deemed unlawful, void, or unenforceable, that provision shall be severed from these Terms and shall not affect the validity or enforceability of the remaining provisions.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Complete Agreement</h2>
+      <p>These Terms of Use, together with the Privacy Policy, constitute the entire agreement between you and Finalray regarding the Application and supersede all prior understandings or agreements, whether written or oral, regarding the Application.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span>Questions or Comments</h2>
+      <p>Finalray welcomes your comments or questions. Please contact us at:</p>
+      <a class="contact-email" href="mailto:mx404999002@outlook.com">mx404999002@outlook.com</a>
+    </section>
+
+    <footer>© 2026 Finalray. All rights reserved.</footer>
+  </div>
+
+  <button id="toTop" aria-label="Back to top">↑</button>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('toTop');
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          if (window.pageYOffset > 400) btn.classList.add('show');
+          else btn.classList.remove('show');
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
 </html>
