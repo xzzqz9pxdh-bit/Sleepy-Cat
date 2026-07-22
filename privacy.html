@@ -1,32 +1,316 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>隐私政策</title>
-    <style>
-        body {max-width:800px;margin:30px auto;padding:0 20px;font-family:Arial,sans-serif;line-height:1.7;color:#333;}
-        h1,h2 {color:#222;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Privacy Policy · Finalray</title>
+<style>
+  :root {
+    --bg: #f2f2f7;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --text-secondary: #6c6c70;
+    --text-tertiary: #8e8e93;
+    --separator: rgba(60, 60, 67, 0.12);
+    --accent: #0a84ff;
+    --card-radius: 14px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --card: #1c1c1e;
+      --text: #ffffff;
+      --text-secondary: #98989f;
+      --text-tertiary: #8e8e93;
+      --separator: rgba(84, 84, 88, 0.55);
+      --accent: #0a84ff;
+    }
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: calc(var(--safe-top)) max(16px, env(safe-area-inset-left)) calc(40px + var(--safe-bottom)) max(16px, env(safe-area-inset-right));
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    text-align: center;
+    padding: 40px 8px 28px;
+  }
+  header .appname {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    margin: 0 0 12px;
+  }
+  header .updated {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin: 0;
+  }
+
+  /* ---------- Intro ---------- */
+  .intro {
+    color: var(--text-secondary);
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin: 0 0 26px;
+    padding: 0 4px;
+  }
+  .intro p { margin: 0 0 12px; }
+  .intro p:last-child { margin-bottom: 0; }
+
+  /* ---------- Section cards ---------- */
+  section {
+    background: var(--card);
+    border-radius: var(--card-radius);
+    padding: 18px 18px 20px;
+    margin: 0 0 18px;
+  }
+  section h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-tertiary);
+    margin: 0 0 10px;
+  }
+  section h2 .num {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+  section p {
+    margin: 0 0 12px;
+  }
+  section p:last-child { margin-bottom: 0; }
+
+  ul {
+    margin: 4px 0 12px;
+    padding-left: 4px;
+    list-style: none;
+  }
+  ul:last-child { margin-bottom: 0; }
+  ul li {
+    position: relative;
+    padding: 8px 0 8px 22px;
+    border-top: 0.5px solid var(--separator);
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+  ul li:first-child { border-top: none; }
+  ul li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 17px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  a { color: var(--accent); text-decoration: none; word-break: break-word; }
+  a:active { opacity: 0.6; }
+
+  .contact-email {
+    display: inline-block;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 13px;
+    margin-top: 30px;
+  }
+
+  /* ---------- Back to top ---------- */
+  #toTop {
+    position: fixed;
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(20px + var(--safe-bottom));
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: var(--card);
+    color: var(--accent);
+    font-size: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #toTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  @media (prefers-color-scheme: dark) {
+    #toTop { box-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+  }
+</style>
 </head>
 <body>
-    <h1>隐私政策</h1>
-    <p>生效日期：2026年07月04日</p>
+  <div class="wrap">
+    <header>
+      <p class="appname">Finalray</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last Updated: July 26, 2026</p>
+    </header>
 
-    <h2>一、我们收集哪些信息</h2>
-    <p>1. 基础使用数据：App运行基础日志，用于崩溃修复；</p>
-    <p>2. 若您注册账号：仅收集您自愿填写的昵称、邮箱；</p>
-    <p>3. 本App不会主动收集相册、通讯录、定位等敏感权限，除非您手动授权。</p>
+    <div class="intro">
+      <p>This Privacy Policy explains how Finalray ("we", "us", or "our") handles information when you use the Finalray mobile application (the "App").</p>
+      <p>Finalray is designed as a local image and video processing application. We respect your privacy and are committed to keeping your photos, videos, and related data under your control.</p>
+      <p>By using Finalray, you agree to the terms of this Privacy Policy. If you do not agree with this Privacy Policy, please do not use the App. We may update this Privacy Policy from time to time. If changes are made, we will update the "Last Updated" date above.</p>
+    </div>
 
-    <h2>二、信息用途</h2>
-    <p>仅用于App功能提供、故障排查、客户问题回复，不会出售、出租您的个人信息给第三方。</p>
+    <section>
+      <h2><span class="num">1</span>Local Processing</h2>
+      <p>Finalray processes photos and videos locally on your device. We do not upload, store, transmit, or share your photos, videos, edited images, or other media files with our servers or any third-party servers.</p>
+      <p>Your media remains on your device and under your control at all times.</p>
+    </section>
 
-    <h2>三、第三方SDK</h2>
-    <p>本App集成XX统计SDK，仅用于统计App使用频次，数据匿名化处理，不关联个人身份。</p>
+    <section>
+      <h2><span class="num">2</span>Photo Library Access</h2>
+      <p>Finalray may request access to your photo library so that you can select, view, and edit images or videos within the App.</p>
+      <p>This access is used only to provide the App's core editing and viewing features. We do not collect, copy, upload, or remotely access your photo library.</p>
+      <p>You can manage or revoke photo library access at any time through your device settings.</p>
+    </section>
 
-    <h2>四、用户权利</h2>
-    <p>您可随时联系开发者邮箱 xxx@xxx.com，申请查看、删除、注销您的全部个人数据。</p>
+    <section>
+      <h2><span class="num">3</span>Photo Metadata and Location Information</h2>
+      <p>Some photos may contain embedded metadata, such as EXIF data. This metadata may include information such as camera settings, date, time, or the location where a photo was taken.</p>
+      <p>Finalray may read this metadata locally on your device to display it to you within the App. We do not collect, track, upload, or share your location information or photo metadata.</p>
+    </section>
 
-    <h2>五、政策更新</h2>
-    <p>隐私政策更新后会在App内公告，持续使用即代表同意更新条款。</p>
+    <section>
+      <h2><span class="num">4</span>Custom Presets and iCloud</h2>
+      <p>If you create custom presets in Finalray, the App may store and sync those presets using your personal iCloud account, if iCloud is enabled on your device.</p>
+      <p>These presets are stored in your own iCloud storage and are used only to sync your settings and custom editing preferences across your devices. We do not operate our own server for storing custom presets, and we do not access, view, sell, or share your iCloud data.</p>
+      <p>Apple processes and stores iCloud data according to Apple's own terms, privacy policy, and your iCloud settings. You can manage iCloud access and delete app-related iCloud data through your device settings or iCloud settings.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">5</span>Information We Do Not Collect</h2>
+      <p>Finalray does not collect personal information from you through our own servers.</p>
+      <p>In particular, we do not collect:</p>
+      <ul>
+        <li>Your photos or videos</li>
+        <li>Your edited media files</li>
+        <li>Your photo metadata</li>
+        <li>Your location data</li>
+        <li>Your contacts</li>
+        <li>Your advertising identifier</li>
+        <li>Analytics data for advertising or tracking purposes</li>
+      </ul>
+      <p>Finalray does not track you across apps or websites owned by other companies.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">6</span>No Third-Party Analytics or Advertising</h2>
+      <p>Finalray does not include third-party advertising SDKs, tracking SDKs, or analytics SDKs.</p>
+      <p>We do not sell, rent, trade, or share your personal information with advertisers or data brokers.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">7</span>Crash Reports and System Diagnostics</h2>
+      <p>Finalray does not independently collect crash reports or diagnostic data through third-party services.</p>
+      <p>However, Apple may provide developers with crash reports or diagnostic information through App Store Connect, Xcode Organizer, TestFlight, or related Apple developer tools if you have chosen to share diagnostics and usage data with Apple in your device settings.</p>
+      <p>Such diagnostic information is handled by Apple according to Apple's own privacy policy and system settings. These reports generally do not include your photos, videos, or edited media content.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">8</span>In-App Purchases and Payments</h2>
+      <p>Finalray may offer paid features, subscriptions, or in-app purchases. Payments and purchase processing are handled by Apple through the App Store.</p>
+      <p>We do not receive or store your full payment card details. However, the App may receive information from Apple that is necessary to verify your purchase status, manage access to paid features, subscriptions, trials, refunds, or transaction history.</p>
+      <p>Apple processes payment and purchase information according to Apple's terms, privacy policy, and App Store policies.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">9</span>Data Security</h2>
+      <p>Because Finalray processes media locally, your photos, videos, and edits remain on your device. The security of your data depends on the security protections provided by your device and operating system, such as iOS/iPadOS sandboxing, encryption, iCloud settings, and access controls.</p>
+      <p>We recommend keeping your device and operating system updated.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Children's Privacy</h2>
+      <p>Finalray is not intended for children under the age of 13, or under the age required by applicable law in your region.</p>
+      <p>We do not knowingly collect personal information from children. Since Finalray does not upload or store personal data on our own servers, we do not possess personal information from children.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Your Rights</h2>
+      <p>Depending on your location, you may have rights under privacy laws such as the General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), or other applicable privacy laws.</p>
+      <p>Because Finalray does not collect or store your personal information on our own servers, we generally do not have personal data that we can access, modify, or delete on your behalf.</p>
+      <p>You can control your data directly on your device or through Apple services by:</p>
+      <ul>
+        <li>Deleting photos or videos from your device</li>
+        <li>Deleting edited files created by the App</li>
+        <li>Deleting custom presets in the App</li>
+        <li>Managing or deleting app-related iCloud data through iCloud settings</li>
+        <li>Revoking photo library access in system settings</li>
+        <li>Managing subscriptions and purchases through your Apple ID settings</li>
+        <li>Deleting the App from your device</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span>Contact Us</h2>
+      <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+      <a class="contact-email" href="mailto:mx404999002@outlook.com">mx404999002@outlook.com</a>
+    </section>
+
+    <footer>© 2026 Finalray. All rights reserved.</footer>
+  </div>
+
+  <button id="toTop" aria-label="Back to top">↑</button>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('toTop');
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          if (window.pageYOffset > 400) btn.classList.add('show');
+          else btn.classList.remove('show');
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
 </html>
