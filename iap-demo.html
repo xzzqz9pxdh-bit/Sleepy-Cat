@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In-App Purchase Locations - Finalray</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #1a1a1a; margin-bottom: 10px; }
+        .subtitle { color: #7f8c8d; margin-bottom: 30px; }
+        h2 { color: #2c3e50; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        video {
+            width: 100%;
+            border-radius: 6px;
+            background-color: #000;
+            display: block;
+        }
+        .note {
+            background-color: #f0f7ff;
+            padding: 20px 24px;
+            border-left: 4px solid #3498db;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .note p { margin: 8px 0; }
+        ol { margin: 15px 0; padding-left: 22px; }
+        li { margin: 14px 0; }
+        .name { font-weight: 600; color: #1a1a1a; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 14px;
+            background-color: #f0f0f0;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+        .meta { color: #7f8c8d; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Finalray — In-App Purchase Locations</h1>
+        <p class="subtitle">Photo Editor &amp; Grid · Reference page for App Review</p>
+
+        <div class="note">
+            <p>Submission ID: <code>e8e33aa3-81f4-45dc-9eef-cf881aec62f5</code></p>
+            <p>Version: 1.0 (1)</p>
+            <p>The recording below was made on a physical device using an Apple sandbox
+               account. It shows each In-App Purchase being located and its purchase sheet
+               being opened, in the same order as the steps listed further down this page.</p>
+        </div>
+
+        <h2>Screen recording</h2>
+        <video src="finalray-iap-demo.mp4" controls preload="metadata" playsinline></video>
+        <p class="meta"><a href="finalray-iap-demo.mp4" download>Download the video file</a></p>
+
+        <h2>Steps</h2>
+        <p>Launch the app and allow photo library access. The photo grid appears.</p>
+        <ol>
+            <li>
+                <span class="name">Collage</span> — <code>com.finalray.pro.puzzle</code><br>
+                From the photo grid, select two or more photos, then tap Collage. In the
+                Templates list, select one of the premium templates (those listed after the
+                free templates). The export button in the top-right turns red. Tap it to open
+                the purchase sheet, then tap the price button to start the purchase.
+            </li>
+            <li>
+                <span class="name">Filters</span> — <code>com.finalray.pro.filter</code><br>
+                Return to the photo grid and tap any single photo to open the editor. Tap
+                Adjust in the bottom toolbar. The first card in the list is Filters, with a
+                lock icon next to its title. Tap the title or the lock icon to open the
+                purchase sheet.
+            </li>
+            <li>
+                <span class="name">Color mix</span> — <code>com.finalray.pro.hsl</code><br>
+                In the editor, tap Adjust and scroll the card list down to the Color mix card.
+                Tap its title or the lock icon next to it.
+            </li>
+            <li>
+                <span class="name">Curve</span> — <code>com.finalray.pro.curve</code><br>
+                In the editor, tap Adjust and scroll further down to the Curve card. Tap its
+                title or the lock icon next to it.
+            </li>
+            <li>
+                <span class="name">Masking</span> — <code>com.finalray.pro.masking</code><br>
+                In the editor, tap Mask in the bottom toolbar and add a mask (for example,
+                Brush). Once a mask layer exists, the mask layer panel header shows a lock
+                icon. Tap the panel title or the lock icon to open the purchase sheet.
+            </li>
+        </ol>
+
+        <h2>Two further locations (not in the recording)</h2>
+        <p>A combined purchase screen: apply a filter, a Color mix adjustment, or a Curve
+           adjustment to a photo, then tap Export followed by Next. A summary sheet lists
+           every paid feature currently in use, each with its own price button that starts
+           the purchase.</p>
+        <p>Restore Purchases: from the photo grid, tap the gear icon at the top-left of the
+           screen to open Settings, then scroll to the OTHER section. The first row is
+           Restore Purchases.</p>
+
+        <h2>Related links</h2>
+        <ul>
+            <li><a href="./privacy.html">Privacy Policy</a></li>
+            <li><a href="./terms.html">Terms of Use</a></li>
+            <li><a href="./support.html">Support</a></li>
+        </ul>
+
+        <hr style="margin-top: 40px; border: none; border-top: 1px solid #eee;">
+        <p style="text-align: center; color: #7f8c8d; font-size: 12px; margin-top: 20px;">
+            © 2026 Finalray. All rights reserved.
+        </p>
+    </div>
+</body>
+</html>
