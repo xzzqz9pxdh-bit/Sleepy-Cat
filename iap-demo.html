@@ -39,7 +39,17 @@
             margin: 20px 0;
         }
         .note p { margin: 8px 0; }
+        .note.warn {
+            background-color: #fff8e6;
+            border-left-color: #e8a33d;
+        }
+        .note h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #1a1a1a;
+        }
         ol { margin: 15px 0; padding-left: 22px; }
+        ul { margin: 15px 0; padding-left: 22px; }
         li { margin: 14px 0; }
         .name { font-weight: 600; color: #1a1a1a; }
         code {
@@ -59,15 +69,64 @@
 
         <div class="note">
             <p>Submission ID: <code>e8e33aa3-81f4-45dc-9eef-cf881aec62f5</code></p>
-            <p>Version: 1.0 (1)</p>
-            <p>The recording below was made on a physical device using an Apple sandbox
-               account. It shows each In-App Purchase being located and its purchase sheet
-               being opened, in the same order as the steps listed further down this page.</p>
+            <p>Version: 1.0 (3)</p>
+            <p>This page lists every location in the app from which an In-App Purchase can be
+               started, and describes what was changed in build 1.0 (3) in response to the
+               previous review.</p>
         </div>
 
+        <div class="note warn">
+            <h3>Important: the test account may already own some of these items</h3>
+            <p>During the previous review, the purchases were completed successfully at the
+               App Store level; the defect was that our app failed to record them. Because all
+               five items are non-consumable, those purchases remain permanently associated
+               with the sandbox Apple Account that made them.</p>
+            <p>If this build is reviewed with the same sandbox Apple Account, the affected
+               features will now correctly appear already unlocked, and no purchase sheet will
+               be presented for them. This is the fix working as intended, and not a missing or
+               non-functional In-App Purchase.</p>
+            <p>To exercise the purchase flow, please use a new sandbox Apple Account, or test
+               one of the five items that was not purchased during the previous review. Tapping
+               <span class="name">Restore Purchases</span> will also report which items the
+               current account already owns.</p>
+        </div>
+
+        <h2>What was fixed in build 1.0 (3)</h2>
+        <p>The previous build did not reconcile completed purchases with StoreKit, which is why
+           a purchase could complete without unlocking its feature, and why the purchase flow
+           could be presented again from the beginning.</p>
+        <ul>
+            <li>Entitlements are now reconciled with <code>Transaction.currentEntitlements</code>
+                at launch, when the app returns to the foreground, and immediately before any
+                purchase sheet is presented. The previous build relied only on local state
+                written at the moment of purchase, so a purchase that completed without the app
+                recording it was never recovered.</li>
+            <li>A <code>Transaction.updates</code> listener is installed at launch and kept for
+                the lifetime of the app, so transactions that arrive outside a purchase call
+                (Ask to Buy approvals, Family Sharing changes, purchases made on another
+                device) are applied instead of being dropped.</li>
+            <li>All transactions are now finished, including any left unfinished by the previous
+                build. Unfinished transactions were one reason the same purchase flow could
+                reappear.</li>
+            <li>Deferred (pending) and failed purchases are now reported to the customer
+                explicitly. In the previous build both cases produced no visible feedback,
+                which made a pending purchase indistinguishable from a failed one and invited a
+                repeated purchase attempt.</li>
+            <li>A <span class="name">Restore Purchases</span> button was added to the top-left
+                corner of every purchase sheet, in addition to the existing one in Settings.</li>
+        </ul>
+
         <h2>Screen recording</h2>
-        <video src="finalray-iap-demo.mp4" controls preload="metadata" playsinline></video>
-        <p class="meta"><a href="finalray-iap-demo.mp4" download>Download the video file</a></p>
+        <p>The recording below was made on a physical device using an Apple sandbox account. It
+           shows each In-App Purchase being located and its purchase sheet being opened, in the
+           same order as the steps listed further down this page.</p>
+        <video src="finalray-iap-demo-build3.mp4" controls preload="metadata" playsinline></video>
+        <p class="meta"><a href="finalray-iap-demo-build3.mp4" download>Download the video file</a></p>
+
+        <h2>The five In-App Purchases</h2>
+        <p>All five are non-consumable one-time unlocks. They are not restricted by storefront,
+           region, or account configuration, and are available on all storefronts. Each one is
+           surfaced from the tool it unlocks, rather than from a single store screen.</p>
 
         <h2>Steps</h2>
         <p>Launch the app and allow photo library access. The photo grid appears.</p>
@@ -106,12 +165,13 @@
 
         <h2>Two further locations (not in the recording)</h2>
         <p>A combined purchase screen: apply a filter, a Color mix adjustment, or a Curve
-           adjustment to a photo, then tap Export followed by Next. A summary sheet lists
-           every paid feature currently in use, each with its own price button that starts
-           the purchase.</p>
+           adjustment to a photo, then tap Export followed by Next. A summary sheet titled
+           &ldquo;Unlock the following features to export&rdquo; lists every paid feature
+           currently in use, each with its own price button that starts the purchase.</p>
         <p>Restore Purchases: from the photo grid, tap the gear icon at the top-left of the
            screen to open Settings, then scroll to the OTHER section. The first row is
-           Restore Purchases.</p>
+           Restore Purchases. The same action is also available from the top-left corner of
+           every purchase sheet.</p>
 
         <h2>Related links</h2>
         <ul>
