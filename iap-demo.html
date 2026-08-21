@@ -69,64 +69,40 @@
 
         <div class="note">
             <p>Submission ID: <code>e8e33aa3-81f4-45dc-9eef-cf881aec62f5</code></p>
-            <p>Version: 1.0 (3)</p>
-            <p>This page lists every location in the app from which an In-App Purchase can be
-               started, and describes what was changed in build 1.0 (3) in response to the
-               previous review.</p>
+            <p>Version: 1.0.0 (4)</p>
+            <p>This page shows every location in the app from which an In-App Purchase can be
+               started.</p>
         </div>
 
         <div class="note warn">
-            <h3>Important: the test account may already own some of these items</h3>
-            <p>During the previous review, the purchases were completed successfully at the
-               App Store level; the defect was that our app failed to record them. Because all
-               five items are non-consumable, those purchases remain permanently associated
-               with the sandbox Apple Account that made them.</p>
-            <p>If this build is reviewed with the same sandbox Apple Account, the affected
-               features will now correctly appear already unlocked, and no purchase sheet will
-               be presented for them. This is the fix working as intended, and not a missing or
-               non-functional In-App Purchase.</p>
-            <p>To exercise the purchase flow, please use a new sandbox Apple Account, or test
-               one of the five items that was not purchased during the previous review. Tapping
-               <span class="name">Restore Purchases</span> will also report which items the
-               current account already owns.</p>
+            <h3>Before you begin: the test account may already own some of these items</h3>
+            <p>All five items are non-consumable one-time unlocks. If the Apple Account used for
+               testing has already purchased one of them, that feature will appear already
+               unlocked and no purchase sheet will be presented for it.</p>
+            <p>To exercise the purchase flow, please use a new sandbox Apple Account, or choose
+               an item that has not been purchased before on the account in use. Tapping
+               <span class="name">Restore Purchases</span> reports which items the current
+               account already owns.</p>
         </div>
-
-        <h2>What was fixed in build 1.0 (3)</h2>
-        <p>The previous build did not reconcile completed purchases with StoreKit, which is why
-           a purchase could complete without unlocking its feature, and why the purchase flow
-           could be presented again from the beginning.</p>
-        <ul>
-            <li>Entitlements are now reconciled with <code>Transaction.currentEntitlements</code>
-                at launch, when the app returns to the foreground, and immediately before any
-                purchase sheet is presented. The previous build relied only on local state
-                written at the moment of purchase, so a purchase that completed without the app
-                recording it was never recovered.</li>
-            <li>A <code>Transaction.updates</code> listener is installed at launch and kept for
-                the lifetime of the app, so transactions that arrive outside a purchase call
-                (Ask to Buy approvals, Family Sharing changes, purchases made on another
-                device) are applied instead of being dropped.</li>
-            <li>All transactions are now finished, including any left unfinished by the previous
-                build. Unfinished transactions were one reason the same purchase flow could
-                reappear.</li>
-            <li>Deferred (pending) and failed purchases are now reported to the customer
-                explicitly. In the previous build both cases produced no visible feedback,
-                which made a pending purchase indistinguishable from a failed one and invited a
-                repeated purchase attempt.</li>
-            <li>A <span class="name">Restore Purchases</span> button was added to the top-left
-                corner of every purchase sheet, in addition to the existing one in Settings.</li>
-        </ul>
 
         <h2>Screen recording</h2>
         <p>The recording below was made on a physical device using an Apple sandbox account. It
            shows each In-App Purchase being located and its purchase sheet being opened, in the
            same order as the steps listed further down this page.</p>
-        <video src="finalray-iap-demo-build3.mp4" controls preload="metadata" playsinline></video>
-        <p class="meta"><a href="finalray-iap-demo-build3.mp4" download>Download the video file</a></p>
+        <video src="finalray-iap-demo-build4.mp4" controls preload="metadata" playsinline></video>
+        <p class="meta"><a href="finalray-iap-demo-build4.mp4" download>Download the video file</a></p>
 
         <h2>The five In-App Purchases</h2>
-        <p>All five are non-consumable one-time unlocks. They are not restricted by storefront,
-           region, or account configuration, and are available on all storefronts. Each one is
-           surfaced from the tool it unlocks, rather than from a single store screen.</p>
+        <p>All five are non-consumable one-time unlocks, available on all storefronts with no
+           regional or account restrictions. Each one is offered from the tool it unlocks,
+           rather than from a single store screen.</p>
+        <ul>
+            <li><span class="name">Collage</span> — <code>com.finalray.pro.puzzle</code></li>
+            <li><span class="name">Filters</span> — <code>com.finalray.pro.filter</code></li>
+            <li><span class="name">Color mix</span> — <code>com.finalray.pro.hsl</code></li>
+            <li><span class="name">Curve</span> — <code>com.finalray.pro.curve</code></li>
+            <li><span class="name">Masking</span> — <code>com.finalray.pro.masking</code></li>
+        </ul>
 
         <h2>Steps</h2>
         <p>Launch the app and allow photo library access. The photo grid appears.</p>
@@ -157,9 +133,9 @@
             </li>
             <li>
                 <span class="name">Masking</span> — <code>com.finalray.pro.masking</code><br>
-                In the editor, tap Mask in the bottom toolbar and add a mask (for example,
-                Brush). Once a mask layer exists, the mask layer panel header shows a lock
-                icon. Tap the panel title or the lock icon to open the purchase sheet.
+                In the editor, tap Mask in the bottom toolbar. The mask card at the bottom of
+                the screen has a lock button at its right end, immediately to the right of the
+                add (+) button. Tap it to open the purchase sheet.
             </li>
         </ol>
 
